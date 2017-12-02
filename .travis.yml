@@ -1,0 +1,12 @@
+language: rust
+after_success: |
+  [ $TRAVIS_BRANCH = master ] &&
+  [ $TRAVIS_PULL_REQUEST = false ] &&
+  cargo doc &&
+  echo "<meta http-equiv=refresh content=0;url=`echo $TRAVIS_REPO_SLUG | cut -d '/' -f 2`/index.html>" > target/doc/index.html &&
+  sudo pip install ghp-import &&
+  ghp-import -n target/doc &&
+  git push -fq https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git gh-pages
+env:
+  global:
+    secure: rTt2W7NOvEBQvmaV8kGqBLs8C95M21c3O28Tmpm5etxMrTHwLDi4epi983EAydRXiEHepyWH9J2DGRp/iYc7/AT1noC7oMnvKiD2zBADUD8VjfHd0Zl0DNC2d76aZ+tF87HHIuuC9dpeC2SJmpCjZuERJ8FzkFF7g9gD+cusfScvWRHEWqGDgZrSSxxdyK/DfM43N+BiNw9VBG+5kTHQ+Ljv9OQ+pdwCUradJgfyl8DuSRoMj0Xm5oNQjzJEQlAyRC59vZdJqTy3RCzwnQfzfBSm3G2yKlnjGdzN2FpTwYmHalERc8c/7BqGQWjaj9OwHM15lRKMLsX5yNPS/0V5bm7RHLYBOefFbV1XhgnGer+vSvY/80s6OVYuSXn/PoGcMwEQIS/+CtqTQHkOoyWkJHcnwURSK6aJhjQcNHuhF11PIaK91o+79EKuUuIReI6N1i6QtMzJFynoRXKJ4kIaARYIB6qGzMtcwrZm1riztdNMnne2wWK3g/B0C1SDCw+Sx3GRfSYTQLvKrrhJPqnfwUKjX9bNGl3gA6Nxg/Cwr6Pjg2FWG8guN7iNpuEUZU5PeKuryPoovpRIKpnYuNq01hfiKKUjL37XxF7nz88HlQN6RgjMnSLeXRuQym7iSyq3vDbLTCk22HCtoDPctrIlOUgzjREikCrY+ZWgtG9GIG8=
