@@ -1,8 +1,8 @@
 #![crate_name = "travis_bot"]
 #![crate_type = "lib"]
 
-#![doc(html_root_url = "https://kyeett.github.io/travis-bot-debug/")]
-#![doc(html_logo_url = "https://raw.githubusercontent.com/kyeett/travis-bot/master/demo.png")]
+#![doc(html_root_url = "https://kyeett.github.io/travis-bot/")]
+#![doc(html_logo_url = "https://raw.githubusercontent.com/kyeet/travis-bot/master/demo.png")]
 
 
 //! This is a comment.
